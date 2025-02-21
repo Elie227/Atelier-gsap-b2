@@ -1,28 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- stylesheet -->
+    <title>Mon Portfolio - Elie Marinet</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script type="module" src="stardust.js"></script>
 </head>
 <body>
-    <h1 id="demo"> DEMO </h1>
+    <div class="cursor"></div>
 
+    <header class="header">
+        <h1><span>Elie Marinet</span></h1>
+    </header>
 
+    <div class="buttons-container">
+        <button class="btn">Projets</button>
+        <button class="btn">À propos</button>
+        <button class="btn">Contact</button>
+    </div>
 
-<!-- JavaScript and GSAP ----------------------------------->
+    <div class="cards-container">
+        <!-- cartes  -->
+    </div>
 
- <!-- GSAP  -->
- <script src="js/gsap.min.js"></script>
- <script src="js/ScrollToPlugin.min.js"></script>
- <script src="js/ScrollTrigger.min.js"></script></body>
- <script src="js/MotionPathPlugin.min.js"></script>
- <script src="js/Draggable.min.js"></script>
+    <div class="sections-container">
+        <section class="half-section">
+            <div class="section-content">
+                <h2>Web Design</h2>
+                <p>Je suis un développeur passionné spécialisé dans la création d'applications web modernes. Mon approche combine créativité et fonctionnalité pour créer des expériences utilisateur uniques. Je m'efforce de rester à jour avec les dernières tendances du design web pour offrir des solutions innovantes.</p>
+                <p>Chaque projet est une nouvelle opportunité de repousser les limites du design et de créer quelque chose d'unique. Je travaille en étroite collaboration avec mes clients pour comprendre leurs besoins et transformer leurs idées en réalité numérique.</p>
+                <button class="section-btn">En savoir plus</button>
+                <p class="button-subtext">Découvrez mes projets de design web</p>
+            </div>
+            <div class="floating-text right">
+                <h3>Développement Web</h3>
+                <p>Création de sites et applications web sur mesure, avec une attention particulière portée aux détails et à l'expérience utilisateur.</p>
+            </div>
+        </section>
+        
+        <section class="half-section">
+            <div class="section-content">
+                <h2>Website</h2>
+                <p>Je propose une gamme complète de services en développement web, de la conception à la mise en ligne. Mon expertise technique me permet de créer des sites web performants, responsifs et optimisés pour les moteurs de recherche.</p>
+                <p>La qualité du code et la maintenabilité sont au cœur de mon processus de développement. J'utilise les meilleures pratiques et les technologies les plus adaptées pour chaque projet, garantissant ainsi des solutions durables et évolutives.</p>
+                <button class="section-btn">Découvrir</button>
+                <p class="button-subtext">Explorez mes réalisations web</p>
+            </div>
+            <div class="floating-text left">
+                <h3>Solutions Sur Mesure</h3>
+                <p>Des solutions adaptées à vos besoins spécifiques, avec un focus sur la performance et l'innovation.</p>
+            </div>
+        </section>
+        
+        <section class="half-section">
+            <div class="section-content">
+                <h2>ADS</h2>
+                <p>Je maîtrise les dernières technologies web pour créer des applications modernes et performantes. Mon expertise en publicité digitale me permet de concevoir des campagnes efficaces et ciblées qui génèrent des résultats mesurables.</p>
+                <p>La publicité digitale est en constante évolution, et je reste à l'affût des nouvelles tendances et technologies. Mon approche data-driven permet d'optimiser les campagnes et d'atteindre les objectifs fixés de manière efficace.</p>
+                <button class="section-btn">Explorer</button>
+                <p class="button-subtext">Consultez mes campagnes publicitaires</p>
+            </div>
+            <div class="floating-text right">
+                <h3>Stack Technique</h3>
+                <p>Utilisation des frameworks et outils les plus récents pour des campagnes publicitaires performantes et innovantes.</p>
+            </div>
+        </section>
+        
+        <section class="half-section">
+            <div class="section-content">
+                <h2>Branding</h2>
+                <p>Je privilégie une approche collaborative tout au long du projet de branding. La création d'une identité de marque forte nécessite une compréhension approfondie des valeurs et des objectifs de l'entreprise. Je travaille en étroite collaboration avec mes clients pour développer une stratégie de marque cohérente et impactante.</p>
+                <p>Chaque élément visuel est soigneusement pensé pour refléter l'essence de votre marque. Du logo aux supports de communication, je crée une identité visuelle unique qui vous démarque de la concurrence et résonne avec votre public cible.</p>
+                <button class="section-btn">Contact</button>
+                <p class="button-subtext">Parlons de votre identité de marque</p>
+            </div>
+            <div class="floating-text left">
+                <h3>Méthode de Travail</h3>
+                <p>Une méthodologie agile et flexible, adaptée à chaque projet de branding pour des résultats optimaux.</p>
+            </div>
+        </section>
+    </div>
 
+    <div class="contact-section">
+        <h2>Contact</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Restons en contact</h3>
+                <p>N'hésitez pas à me contacter pour vos projets</p>
+                <div class="contact-details">
+                    <p>📧 email@example.com</p>
+                    <p>📱 +33 6 XX XX XX XX</p>
+                    <p>📍 Paris, France</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Nom" required>
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Sujet">
+                <textarea placeholder="Votre message" required></textarea>
+                <button type="submit" class="contact-btn">Envoyer</button>
+            </form>
+        </div>
+    </div>
 
-  <!-- Custom JS -->
-<script src="js/main.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger, Draggable);
+
+        const cursor = document.querySelector('.cursor');
+        const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        const mouse = { x: pos.x, y: pos.y };
+        const speed = 0.5;
+
+        const xSet = gsap.quickSetter(cursor, "x", "px");
+        const ySet = gsap.quickSetter(cursor, "y", "px");
+
+        window.addEventListener("mousemove", e => {    
+            mouse.x = e.x;
+            mouse.y = e.y;  
+            
+            gsap.to(cursor, {
+                scale: 1.1,
+                duration: 0.1,
+                ease: "power2.out",
+                onComplete: () => {
+                    gsap.to(cursor, {
+                        scale: 1,
+                        duration: 0.1,
+                        ease: "power2.out"
+                    });
+                }
+            });
+        });
+
+        const textElements = document.querySelectorAll('.section-content p, .floating-text p, h2, h3');
+        
+        textElements.forEach(element => {
+            element.addEventListener('mousemove', (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                gsap.to(element, {
+                    transformOrigin: `${x}px ${y}px`,
+                    scale: 1.1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            element.addEventListener('mouseleave', () => {
+                gsap.to(element, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        gsap.ticker.add(() => {
+            const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio()); 
+            pos.x += (mouse.x - pos.x) * dt;
+            pos.y += (mouse.y - pos.y) * dt;
+            xSet(pos.x);
+            ySet(pos.y);
+        });
+
+        window.onload = () => {
+            gsap.from(".profile-container", {
+                opacity: 0,
+                y: -50,
+                duration: 1,
+                ease: "power2.out"
+            });
+        };
+
+        gsap.from(".card", {
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 1,
+            ease: "power2.out"
+        });
+
+        document.querySelectorAll('.half-section').forEach((section, index) => {
+            gsap.from(section, {
+                opacity: 0,
+                y: 100,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        const firstSection = document.querySelector('.half-section');
+        if (firstSection) {
+            Draggable.create(firstSection, {
+                type: "x,y",
+                edgeResistance: 0.8,
+                bounds: "body",
+                inertia: true,
+                onDragEnd: function() {
+                    gsap.to(this.target, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                }
+            });
+        }
+    </script>
+
+    <script src="stardust.js"></script>
 </body>
 </html>

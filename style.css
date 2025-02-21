@@ -1,4 +1,620 @@
-#demo{
-    color: red;
+:root {
+    --bg-color: #000000;
+    --text-color: #FFFFFF;
+    --accent-cyan: #5CE1E6;
 }
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: radial-gradient(circle at top right,
+        rgba(79, 168, 255, 0.3) 0%,
+        rgba(0, 0, 0, 1) 70%
+    );
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* Effet de grille légèrement bleuté plus centre de texte ect.. */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(79, 168, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79, 168, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#starDust {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.profile-container {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.cards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.card {
+    background: rgba(92, 225, 230, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--accent-cyan);
+    width: 250px;
+    text-align: center;
+}
+
+.sections-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    z-index: 2;
+    position: relative;
+}
+
+.half-section {
+    width: 50%;
+    min-height: 50vh;
+    padding: 30px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(92, 225, 230, 0.1) 100%
+    );
+    border: 1px solid var(--accent-cyan);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    cursor: move;
+    user-select: none;
+    z-index: 2;
+}
+
+.half-section:nth-child(odd) {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.half-section:nth-child(even) {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+}
+
+.half-section:nth-child(odd).hidden {
+    transform: translateX(-100%);
+}
+
+.half-section:nth-child(even).hidden {
+    transform: translateX(100%);
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0) !important;
+}
+
+.half-section:nth-child(2) {
+    transition-delay: 200ms;
+}
+
+.half-section:nth-child(3) {
+    transition-delay: 400ms;
+}
+
+.half-section:nth-child(4) {
+    transition-delay: 600ms;
+}
+
+.section-content {
+    text-align: center;
+}
+
+.section-content h2 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-content p {
+    color: var(--text-color);
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.floating-text {
+    position: absolute;
+    width: 40%;
+    padding: 20px;
+    color: var(--text-color);
+    opacity: 0.9;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.floating-text h3 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.floating-text.right {
+    left: 120%;
+    text-align: left;
+}
+
+.floating-text.left {
+    right: 120%;
+    text-align: right;
+}
+
+@media (max-width: 1400px) {
+    .floating-text {
+        width: 35%;
+    }
+    
+    .floating-text.right {
+        left: 110%;
+    }
+    
+    .floating-text.left {
+        right: 110%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .floating-text {
+        width: 30%;
+    }
+    
+    .floating-text.right {
+        left: 105%;
+    }
+    
+    .floating-text.left {
+        right: 105%;
+    }
+}
+
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .half-section {
+        width: 90%;
+        margin: 0 auto !important;
+    }
+    
+    .floating-text {
+        position: static;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+        transform: none;
+    }
+    
+    .floating-text.left,
+    .floating-text.right {
+        right: auto;
+        left: auto;
+        text-align: center;
+    }
+
+    .sections-container {
+        gap: 40px;
+    }
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(92, 225, 230, 0.3);
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+h1 {
+    color: var(--accent-cyan);
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    opacity: 0.8;
+    margin: 0;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+}
+
+.card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card h3 {
+    color: var(--accent-cyan);
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--text-color);
+    opacity: 0.9;
+    margin: 0;
+}
+
+.glow-button {
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+}
+
+.glow-button:hover {
+    background: rgba(92, 225, 230, 0.1);
+    box-shadow: 0 0 20px rgba(92, 225, 230, 0.2);
+}
+
+.floating-text p {
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.floating-text:hover,
+.section-content p:hover {
+    opacity: 1;
+}
+
+/* Style des sections */
+.half-section:nth-child(1) {
+    background: radial-gradient(circle at top right,
+        rgba(79, 168, 255, 0.2) 0%,
+        rgba(0, 0, 0, 0.95) 80%
+    );
+    border: 1px solid var(--accent-cyan);
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 0 30px rgba(79, 168, 255, 0.2),
+        0 0 60px rgba(79, 168, 255, 0.1);
+}
+
+.half-section:nth-child(2) {
+    background: radial-gradient(circle at top left,
+        rgba(147, 88, 255, 0.2) 0%,
+        rgba(0, 0, 0, 0.95) 80%
+    );
+    border: 1px solid #4FA8FF;
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 0 30px rgba(147, 88, 255, 0.2),
+        0 0 60px rgba(147, 88, 255, 0.1);
+}
+
+.half-section:nth-child(3) {
+    background: radial-gradient(circle at bottom right,
+        rgba(54, 214, 173, 0.2) 0%,
+        rgba(0, 0, 0, 0.95) 80%
+    );
+    border: 1px solid #36D6AD;
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 0 30px rgba(54, 214, 173, 0.2),
+        0 0 60px rgba(54, 214, 173, 0.1);
+}
+
+.half-section:nth-child(4) {
+    background: radial-gradient(circle at bottom left,
+        rgba(255, 126, 179, 0.2) 0%,
+        rgba(0, 0, 0, 0.95) 80%
+    );
+    border: 1px solid #9358FF;
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 0 30px rgba(255, 126, 179, 0.2),
+        0 0 60px rgba(255, 126, 179, 0.1);
+}
+
+.half-section:nth-child(1) h2 {
+    color: var(--text-color);
+}
+
+.half-section:nth-child(2) h2 {
+    color: var(--text-color);
+}
+
+.half-section:nth-child(3) h2 {
+    color: var(--text-color);
+}
+
+.half-section:nth-child(4) h2 {
+    color: var(--text-color);
+}
+
+.header {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    z-index: 2;
+    position: relative;
+}
+
+.header h1 {
+    color: var(--text-color);
+    font-size: 3em;
+    margin-bottom: 30px;
+    font-family: 'Georgia', serif;
+    text-shadow: 0 0 10px rgba(92, 225, 230, 0.3);
+    letter-spacing: 2px;
+    transform: none;
+}
+
+/* Ajout d'espace entre Elie et Marinet */
+.header h1::before {
+    content: "Elie";
+    font-style: italic;
+    transform: skew(-15deg);
+    display: inline-block;
+    margin-right: 20px; /* Espace ajouté entre les deux mots */
+}
+
+.header h1::after {
+    content: "Marinet";
+    font-style: normal;
+    display: inline-block;
+}
+
+/* texte original et bouton */
+.header h1 span {
+    display: none;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.btn {
+    padding: 10px 30px;
+    border: 1px solid var(--accent-cyan);
+    background: rgba(255, 255, 255, 0.95);
+    color: #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: rgba(92, 225, 230, 0.1);
+    color: var(--accent-cyan);
+    transform: translateY(-2px);
+}
+
+
+/* Style des boutons dans les sections */
+.section-btn {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: transparent;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Style spécifique pour chaque bouton selon sa section */
+.half-section:nth-child(1) .section-btn {
+    border-color: rgba(79, 168, 255, 0.8);
+}
+
+.half-section:nth-child(2) .section-btn {
+    border-color: rgba(147, 88, 255, 0.8);
+}
+
+.half-section:nth-child(3) .section-btn {
+    border-color: rgba(54, 214, 173, 0.8);
+}
+
+.half-section:nth-child(4) .section-btn {
+    border-color: rgba(255, 126, 179, 0.8);
+}
+
+/* Effet de hover sur les boutons */
+.section-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Style de la section contact */
+.contact-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 40px;
+    background: radial-gradient(circle at center,
+        rgba(79, 168, 255, 0.2) 0%,
+        rgba(0, 0, 0, 0.95) 80%
+    );
+    border: 1px solid var(--accent-cyan);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 0 30px rgba(79, 168, 255, 0.2),
+        0 0 60px rgba(79, 168, 255, 0.1);
+}
+
+.contact-section h2 {
+    color: var(--text-color);
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+.contact-container {
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+}
+
+.contact-info {
+    flex: 1;
+    color: var(--text-color);
+}
+
+.contact-info h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.contact-details {
+    margin-top: 30px;
+}
+
+.contact-details p {
+    margin: 15px 0;
+    font-size: 1.1em;
+}
+
+.contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(79, 168, 255, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.contact-btn {
+    padding: 15px 30px;
+    background: transparent;
+    border: 1px solid var(--accent-cyan);
+    color: var(--text-color);
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.contact-btn:hover {
+    background: rgba(79, 168, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Media querie pour le responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-btn {
+        align-self: stretch;
+    }
+}
+
+.half-section:active {
+    cursor: grabbing;
+}
+
+
+/* Effet hover */
+.half-section:hover ~ .cursor,
+.btn:hover ~ .cursor,
+.contact-btn:hover ~ .cursor {
+    width: 40px;
+    height: 40px;
+    background: rgba(92, 225, 230, 0.1);
+}
+
+/* Garder le curseur par défaut sur mobile */
+@media (max-width: 768px) {
+    .cursor {
+        display: none;
+    }
+    body {
+        cursor: auto;
+    }
+}
+
+/* Le reste du CSS reste inchangé */
 
